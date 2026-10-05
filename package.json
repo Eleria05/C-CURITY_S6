@@ -1,0 +1,7 @@
+{
+  "name": "ccurity-s6",
+  "version": "1.0.0",
+  "description": "S6 Prototipo Funcional - logica de negocio de CAM-CONTROL (sin interfaz)",
+  "main": "ccurity.js",
+  "scripts": { "demo": "node main.js", "test": "node pruebas.js" }
+}
