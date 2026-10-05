@@ -1,14 +1,14 @@
 # C-CURITY · CAM-CONTROL — S6 Prototipo Funcional
 
 Lógica de negocio de la plataforma **CAM-CONTROL**, que digitaliza la operación del negocio familiar
-C-CURITY (instalación y mantenimiento de videovigilancia). Está escrita en **JavaScript (Node.js)**
-**sin interfaz de usuario**, tal como pide el taller de prototipado funcional.
+C-CURITY (instalación y mantenimiento de videovigilancia). Hecha en **JavaScript (Node.js)**
+**sin interfaz de usuario**.
 
 | | |
 |---|---|
 | **Materia** | Construcción de Software · 4CV42 · 2027-1 |
 | **Entrega** | S6 Prototipo Funcional |
-| **Equipo 8** | Rios Solorio Samanta · Hernandez Eleria Juan Jose · Alanis Valle Alonso Emanuel · Nuñez Solis Luis Angel |
+| **Equipo 8** | Rios Solorio Samanta , Hernandez Eleria Juan Jose , Alanis Valle Alonso Emanuel , Nuñez Solis Luis Angel |
 
 ## ¿Qué hace?
 
@@ -19,19 +19,19 @@ Cliente solicita → Admin agenda y asigna técnico → Técnico inicia y llena 
       → Se finaliza (solo con checklist al 100%) → Reporte + semáforo → Siguiente preventivo
 ```
 
-Corresponde a la capa de **Lógica de negocio** de la arquitectura monolítica en capas definida en S3.
-Los datos se guardan en arreglos en memoria (se pierden al cerrar el programa); en una fase posterior
+Corresponde a la capa de **Lógica de negocio** de la arquitectura monolítica en capas.
+Los datos se guardan en arreglos en memoria , en una fase posterior
 esa capa se conecta a PostgreSQL.
 
 ## Cómo ejecutarlo
 
-**Requisito:** [Node.js](https://nodejs.org) 18 o superior. No hay dependencias ni `npm install`.
+**Requisito:** [Node.js](https://nodejs.org).
 
 Desde la carpeta del proyecto:
 
 ```bash
 node main.js        # demo: recorre el proceso completo en consola
-node pruebas.js     # 13 pruebas automáticas (deben salir 0 con fallo)
+node pruebas.js     # 13 pruebas automáticas
 ```
 
 También funcionan `npm run demo` y `npm test`.
@@ -45,7 +45,7 @@ También funcionan `npm run demo` y `npm test`.
 | `pruebas.js` | Pruebas automáticas de cada regla de negocio |
 | `package.json` | Datos del proyecto y atajos (`npm run demo`, `npm test`) |
 
-## Reglas de negocio implementadas (diagnóstico S1)
+## Reglas de negocio implementadas
 
 | Regla | Dónde está (`ccurity.js`) | Prueba que la valida |
 |---|---|---|
@@ -60,7 +60,7 @@ También funcionan `npm run demo` y `npm test`.
 | El administrador programa el siguiente preventivo | `programarPreventivo` | RMA y siguiente preventivo |
 | No se duplican órdenes abiertas ni se empalman las visitas de un técnico | `crearOrden`, `ocupado` | no se duplican · agenda |
 
-> **Nota sobre el checklist:** una casilla marcada `FALLA` cuenta como revisada, pero obliga al técnico a
+> **Nota sobre checklist:** una casilla marcada `FALLA` cuenta como revisada, pero obliga al técnico a
 > documentar la incidencia y la solución aplicada. El estado del equipo afectado se actualiza al finalizar.
 
 ### Permisos por perfil
@@ -81,19 +81,11 @@ También funcionan `npm run demo` y `npm test`.
 
 ## Supuestos
 
-El diagnóstico no define estos valores, así que se asumieron y **deben confirmarse con el propietario**.
-Están al inicio de `ccurity.js`:
-
 - Tarifa base de visita: **$450 MXN** · cargo por km adicional: **$12 MXN**
 - Duración de una visita: **2 horas** (para detectar empalmes en la agenda del técnico)
 - Siguiente preventivo: **3 meses** después del servicio
 - Semáforo: DVR/NVR o disco fuera de servicio, o la mitad de los equipos caídos → *Fuera de Servicio*
 
-## Alcance y siguientes pasos
+## Alcance y Siguientes pasos
 
-Esta entrega cubre únicamente la lógica de negocio. Queda para las siguientes fases:
-
-- [ ] Base de datos PostgreSQL (reemplazar los arreglos en memoria)
-- [ ] API con Express e inicio de sesión con JWT y contraseñas cifradas
-- [ ] Reporte en PDF (Puppeteer); por ahora el reporte sale como texto
-- [ ] Interfaz de usuario según los mockups de Figma
+Esta entrega cubre solamente la lógica de negocio.Las siguientes fases son Base de Datos,API e Interfaz con base a los mockups de Figma.
